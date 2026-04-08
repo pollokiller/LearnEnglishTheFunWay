@@ -1,0 +1,2073 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>English Hub — Inglés Intermedio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #0d0f1a;
+    --bg2: #151826;
+    --bg3: #1e2235;
+    --card: #1a1d2e;
+    --border: rgba(255,255,255,0.08);
+    --accent1: #6c63ff;
+    --accent2: #ff6584;
+    --accent3: #43e8a0;
+    --accent4: #ffb347;
+    --text: #f0f2ff;
+    --text2: #9099bb;
+    --text3: #5c6280;
+    --radius: 18px;
+    --radius-sm: 10px;
+  }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* STARS BACKGROUND */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      radial-gradient(1px 1px at 20% 30%, rgba(255,255,255,0.4) 0%, transparent 100%),
+      radial-gradient(1px 1px at 80% 10%, rgba(255,255,255,0.3) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 50% 60%, rgba(255,255,255,0.25) 0%, transparent 100%),
+      radial-gradient(1px 1px at 10% 80%, rgba(255,255,255,0.35) 0%, transparent 100%),
+      radial-gradient(1px 1px at 90% 70%, rgba(255,255,255,0.2) 0%, transparent 100%),
+      radial-gradient(1px 1px at 35% 15%, rgba(255,255,255,0.3) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 65% 85%, rgba(255,255,255,0.25) 0%, transparent 100%),
+      radial-gradient(1px 1px at 5% 45%, rgba(255,255,255,0.2) 0%, transparent 100%),
+      radial-gradient(1px 1px at 95% 35%, rgba(255,255,255,0.3) 0%, transparent 100%),
+      radial-gradient(1px 1px at 45% 95%, rgba(255,255,255,0.2) 0%, transparent 100%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* GLOW ORBS */
+  .orb {
+    position: fixed;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.15;
+    pointer-events: none;
+    z-index: 0;
+  }
+  .orb-1 { width: 500px; height: 500px; background: var(--accent1); top: -100px; left: -100px; }
+  .orb-2 { width: 400px; height: 400px; background: var(--accent2); bottom: 0; right: -50px; }
+  .orb-3 { width: 300px; height: 300px; background: var(--accent3); top: 50%; left: 50%; transform: translate(-50%,-50%); }
+
+  /* NAV */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(13,15,26,0.85);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 64px;
+  }
+
+  .nav-logo {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 1.3rem;
+    background: linear-gradient(135deg, var(--accent1), var(--accent3));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    letter-spacing: -0.5px;
+  }
+
+  .nav-badge {
+    background: rgba(108,99,255,0.2);
+    border: 1px solid rgba(108,99,255,0.4);
+    color: var(--accent1);
+    font-size: 0.72rem;
+    font-weight: 500;
+    padding: 4px 12px;
+    border-radius: 100px;
+    letter-spacing: 0.5px;
+  }
+
+  /* HERO */
+  .hero {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    padding: 5rem 2rem 3rem;
+  }
+
+  .hero-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(67,232,160,0.1);
+    border: 1px solid rgba(67,232,160,0.25);
+    color: var(--accent3);
+    font-size: 0.8rem;
+    font-weight: 500;
+    padding: 6px 16px;
+    border-radius: 100px;
+    margin-bottom: 1.5rem;
+    letter-spacing: 0.5px;
+  }
+
+  .hero-tag::before { content: '✦'; font-size: 10px; }
+
+  h1.hero-title {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(2.5rem, 7vw, 5rem);
+    font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: -2px;
+    margin-bottom: 1rem;
+  }
+
+  .hero-title span {
+    background: linear-gradient(135deg, #6c63ff 0%, #ff6584 50%, #43e8a0 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .hero-sub {
+    color: var(--text2);
+    font-size: 1.1rem;
+    font-weight: 300;
+    max-width: 500px;
+    margin: 0 auto 3rem;
+    line-height: 1.7;
+  }
+
+  /* SKILL CARDS GRID */
+  .skills-grid {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.25rem;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 1.5rem 4rem;
+  }
+
+  .skill-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 2rem;
+    cursor: pointer;
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .skill-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    border-radius: inherit;
+  }
+
+  .skill-card:hover { transform: translateY(-6px); }
+  .skill-card:hover::before { opacity: 1; }
+
+  .card-listen::before { background: linear-gradient(135deg, rgba(108,99,255,0.08), transparent); }
+  .card-listen:hover { border-color: rgba(108,99,255,0.5); box-shadow: 0 20px 60px rgba(108,99,255,0.15); }
+
+  .card-read::before { background: linear-gradient(135deg, rgba(67,232,160,0.08), transparent); }
+  .card-read:hover { border-color: rgba(67,232,160,0.5); box-shadow: 0 20px 60px rgba(67,232,160,0.15); }
+
+  .card-write::before { background: linear-gradient(135deg, rgba(255,179,71,0.08), transparent); }
+  .card-write:hover { border-color: rgba(255,179,71,0.5); box-shadow: 0 20px 60px rgba(255,179,71,0.15); }
+
+  .card-speak::before { background: linear-gradient(135deg, rgba(255,101,132,0.08), transparent); }
+  .card-speak:hover { border-color: rgba(255,101,132,0.5); box-shadow: 0 20px 60px rgba(255,101,132,0.15); }
+
+  .skill-icon {
+    font-size: 2.8rem;
+    margin-bottom: 1.2rem;
+    display: block;
+    position: relative;
+    z-index: 1;
+  }
+
+  .skill-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  .skill-desc {
+    color: var(--text2);
+    font-size: 0.9rem;
+    line-height: 1.6;
+    position: relative;
+    z-index: 1;
+    margin-bottom: 1.5rem;
+  }
+
+  .skill-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    border-radius: 100px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    font-family: 'DM Sans', sans-serif;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    position: relative;
+    z-index: 1;
+  }
+
+  .btn-purple { background: rgba(108,99,255,0.2); color: #a09bff; }
+  .btn-purple:hover { background: rgba(108,99,255,0.35); }
+  .btn-green { background: rgba(67,232,160,0.2); color: #43e8a0; }
+  .btn-green:hover { background: rgba(67,232,160,0.35); }
+  .btn-amber { background: rgba(255,179,71,0.2); color: #ffb347; }
+  .btn-amber:hover { background: rgba(255,179,71,0.35); }
+  .btn-pink { background: rgba(255,101,132,0.2); color: #ff6584; }
+  .btn-pink:hover { background: rgba(255,101,132,0.35); }
+
+  .skill-topics {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 0.75rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  .topic-tag {
+    font-size: 0.7rem;
+    padding: 3px 10px;
+    border-radius: 100px;
+    font-weight: 500;
+    background: var(--bg3);
+    color: var(--text3);
+    border: 1px solid var(--border);
+  }
+
+  /* ===== MODAL ===== */
+  .modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(5,7,15,0.92);
+    backdrop-filter: blur(10px);
+    z-index: 200;
+    overflow-y: auto;
+    padding: 2rem 1rem;
+  }
+
+  .modal-overlay.open { display: flex; align-items: flex-start; justify-content: center; }
+
+  .modal {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 24px;
+    width: 100%;
+    max-width: 780px;
+    margin: auto;
+    overflow: hidden;
+    animation: slideUp 0.4s cubic-bezier(0.34,1.56,0.64,1);
+  }
+
+  @keyframes slideUp {
+    from { opacity: 0; transform: translateY(40px) scale(0.96); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+  }
+
+  .modal-header {
+    padding: 2rem 2rem 1.5rem;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+
+  .modal-title-area { display: flex; align-items: center; gap: 1rem; }
+
+  .modal-icon { font-size: 2rem; }
+
+  .modal-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+  }
+
+  .modal-subtitle { color: var(--text2); font-size: 0.85rem; margin-top: 2px; }
+
+  .close-btn {
+    width: 38px; height: 38px;
+    border-radius: 50%;
+    border: 1px solid var(--border);
+    background: var(--bg3);
+    color: var(--text2);
+    font-size: 1.2rem;
+    cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    transition: all 0.2s;
+    flex-shrink: 0;
+  }
+  .close-btn:hover { background: var(--border); color: var(--text); }
+
+  /* DIALOG CONTENT */
+  .modal-body { padding: 2rem; }
+
+  /* Tabs */
+  .tabs {
+    display: flex;
+    gap: 6px;
+    margin-bottom: 2rem;
+    background: var(--bg3);
+    padding: 4px;
+    border-radius: 12px;
+    overflow-x: auto;
+  }
+
+  .tab-btn {
+    flex: 1;
+    min-width: fit-content;
+    padding: 8px 16px;
+    border-radius: 8px;
+    border: none;
+    background: transparent;
+    color: var(--text2);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+    white-space: nowrap;
+  }
+
+  .tab-btn.active {
+    background: var(--card);
+    color: var(--text);
+  }
+
+  /* Dialog boxes */
+  .dialog-scene {
+    display: none;
+    animation: fadeIn 0.3s ease;
+  }
+
+  .dialog-scene.active { display: block; }
+
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+
+  .scene-intro {
+    background: var(--bg3);
+    border-radius: 12px;
+    padding: 1rem 1.25rem;
+    margin-bottom: 1.5rem;
+    border-left: 3px solid var(--accent1);
+  }
+
+  .scene-label {
+    font-size: 0.7rem;
+    font-weight: 500;
+    color: var(--accent1);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+
+  .scene-title { font-weight: 500; font-size: 0.95rem; color: var(--text); }
+  .scene-hint { font-size: 0.82rem; color: var(--text2); margin-top: 3px; }
+
+  /* Chat bubbles */
+  .dialogue { display: flex; flex-direction: column; gap: 1rem; margin-bottom: 2rem; }
+
+  .bubble-wrap {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+  }
+
+  .bubble-wrap.right { flex-direction: row-reverse; }
+
+  .avatar {
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1rem;
+    flex-shrink: 0;
+    font-weight: 600;
+  }
+
+  .bubble {
+    max-width: 80%;
+    padding: 0.75rem 1rem;
+    border-radius: 16px;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    position: relative;
+  }
+
+  .bubble.left {
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-top-left-radius: 4px;
+  }
+
+  .bubble.right {
+    background: rgba(108,99,255,0.15);
+    border: 1px solid rgba(108,99,255,0.25);
+    border-top-right-radius: 4px;
+  }
+
+  .bubble-name { font-size: 0.72rem; color: var(--text3); margin-bottom: 3px; font-weight: 500; }
+
+  .bubble-text { color: var(--text); }
+
+  .bubble .en { font-weight: 500; }
+  .bubble .es { font-size: 0.78rem; color: var(--text2); margin-top: 3px; font-style: italic; }
+
+  /* Play button inside bubble */
+  .play-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    margin-top: 6px;
+    padding: 4px 10px;
+    border-radius: 100px;
+    border: none;
+    background: rgba(255,255,255,0.08);
+    color: var(--text2);
+    font-size: 0.72rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-family: 'DM Sans', sans-serif;
+  }
+
+  .play-btn:hover { background: rgba(255,255,255,0.15); color: var(--text); }
+  .play-btn.playing { color: var(--accent3); background: rgba(67,232,160,0.1); }
+
+  /* Quiz area */
+  .quiz-area {
+    background: var(--bg3);
+    border-radius: 16px;
+    padding: 1.5rem;
+    margin-top: 1.5rem;
+    border: 1px solid var(--border);
+  }
+
+  .quiz-label {
+    font-size: 0.72rem;
+    font-weight: 500;
+    color: var(--accent4);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .quiz-q { font-size: 0.95rem; margin-bottom: 1rem; line-height: 1.5; }
+
+  .quiz-options { display: flex; flex-direction: column; gap: 8px; }
+
+  .quiz-opt {
+    padding: 10px 16px;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    background: var(--card);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.88rem;
+    cursor: pointer;
+    text-align: left;
+    transition: all 0.2s;
+  }
+
+  .quiz-opt:hover:not(:disabled) { border-color: rgba(108,99,255,0.5); background: rgba(108,99,255,0.08); }
+  .quiz-opt.correct { border-color: var(--accent3) !important; background: rgba(67,232,160,0.12) !important; color: var(--accent3) !important; }
+  .quiz-opt.wrong { border-color: var(--accent2) !important; background: rgba(255,101,132,0.12) !important; color: var(--accent2) !important; }
+  .quiz-opt:disabled { cursor: default; }
+
+  .quiz-feedback {
+    margin-top: 1rem;
+    padding: 10px 14px;
+    border-radius: 10px;
+    font-size: 0.88rem;
+    display: none;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .quiz-feedback.show { display: flex; }
+  .quiz-feedback.ok { background: rgba(67,232,160,0.1); border: 1px solid rgba(67,232,160,0.3); color: var(--accent3); }
+  .quiz-feedback.fail { background: rgba(255,101,132,0.1); border: 1px solid rgba(255,101,132,0.3); color: var(--accent2); }
+
+  /* Writing area */
+  .write-area {
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+    margin-top: 1rem;
+  }
+
+  .write-area textarea {
+    width: 100%;
+    background: transparent;
+    border: none;
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem;
+    padding: 1rem 1.25rem;
+    resize: vertical;
+    min-height: 120px;
+    line-height: 1.7;
+    outline: none;
+  }
+
+  .write-toolbar {
+    padding: 0.75rem 1rem;
+    border-top: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+
+  .word-count { font-size: 0.78rem; color: var(--text3); }
+
+  .check-btn {
+    padding: 8px 20px;
+    border-radius: 100px;
+    border: none;
+    background: linear-gradient(135deg, var(--accent1), #8b5cf6);
+    color: #fff;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: opacity 0.2s;
+  }
+
+  .check-btn:hover { opacity: 0.85; }
+
+  .model-answer {
+    margin-top: 1rem;
+    padding: 1rem;
+    background: rgba(67,232,160,0.06);
+    border: 1px solid rgba(67,232,160,0.2);
+    border-radius: 12px;
+    font-size: 0.88rem;
+    line-height: 1.6;
+    display: none;
+  }
+
+  .model-answer.show { display: block; }
+  .model-answer strong { color: var(--accent3); font-size: 0.72rem; letter-spacing: 1px; text-transform: uppercase; display: block; margin-bottom: 6px; }
+
+  /* Speaking section */
+  .speak-area {
+    background: var(--bg3);
+    border-radius: 16px;
+    padding: 1.5rem;
+    border: 1px solid var(--border);
+    text-align: center;
+  }
+
+  .mic-btn {
+    width: 80px; height: 80px;
+    border-radius: 50%;
+    border: none;
+    background: linear-gradient(135deg, var(--accent2), #c9265d);
+    color: #fff;
+    font-size: 2rem;
+    cursor: pointer;
+    margin: 1rem auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s;
+    box-shadow: 0 0 0 0 rgba(255,101,132,0.4);
+  }
+
+  .mic-btn.recording {
+    animation: pulse-mic 1s infinite;
+    background: linear-gradient(135deg, #ff3366, #cc0033);
+  }
+
+  @keyframes pulse-mic {
+    0% { box-shadow: 0 0 0 0 rgba(255,101,132,0.6); }
+    70% { box-shadow: 0 0 0 20px rgba(255,101,132,0); }
+    100% { box-shadow: 0 0 0 0 rgba(255,101,132,0); }
+  }
+
+  .speak-instructions { font-size: 0.88rem; color: var(--text2); line-height: 1.6; margin-bottom: 0.5rem; }
+  .speak-status { font-size: 0.82rem; color: var(--text3); margin-top: 0.5rem; min-height: 1.2em; }
+
+  .speaking-tips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
+    margin-top: 1.25rem;
+  }
+
+  .tip-chip {
+    padding: 5px 14px;
+    border-radius: 100px;
+    font-size: 0.78rem;
+    background: var(--card);
+    border: 1px solid var(--border);
+    color: var(--text2);
+  }
+
+  /* Partner practice */
+  .partner-section {
+    margin-top: 2rem;
+    padding: 1.25rem;
+    background: rgba(67,232,160,0.05);
+    border: 1px solid rgba(67,232,160,0.2);
+    border-radius: 16px;
+  }
+
+  .partner-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--accent3);
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .partner-desc { font-size: 0.85rem; color: var(--text2); line-height: 1.6; }
+
+  .role-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 1rem;
+  }
+
+  .role-card {
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1rem;
+  }
+
+  .role-label {
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+
+  .role-person-a { color: var(--accent1); }
+  .role-person-b { color: var(--accent2); }
+
+  .role-lines { font-size: 0.82rem; color: var(--text2); line-height: 1.8; }
+
+  /* Progress bar */
+  .progress-strip {
+    display: flex;
+    gap: 6px;
+    padding: 0 2rem 1.5rem;
+    position: sticky;
+    bottom: 0;
+  }
+
+  .progress-dot {
+    flex: 1;
+    height: 4px;
+    border-radius: 2px;
+    background: var(--bg3);
+    transition: background 0.3s;
+  }
+
+  .progress-dot.done { background: var(--accent1); }
+
+  /* Navigation buttons */
+  .modal-nav {
+    padding: 1rem 2rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    border-top: 1px solid var(--border);
+  }
+
+  .nav-btn {
+    padding: 10px 24px;
+    border-radius: 100px;
+    border: 1px solid var(--border);
+    background: var(--bg3);
+    color: var(--text2);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.88rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .nav-btn:hover { background: var(--border); color: var(--text); }
+  .nav-btn:disabled { opacity: 0.3; cursor: default; }
+  .nav-btn.primary {
+    background: linear-gradient(135deg, var(--accent1), #8b5cf6);
+    border-color: transparent;
+    color: #fff;
+  }
+  .nav-btn.primary:hover { opacity: 0.9; }
+
+  .scene-counter { font-size: 0.82rem; color: var(--text3); }
+
+  /* Score badge */
+  .score-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 4px 12px;
+    border-radius: 100px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    background: rgba(255,179,71,0.15);
+    border: 1px solid rgba(255,179,71,0.3);
+    color: var(--accent4);
+  }
+
+  /* Celebration */
+  .celebration {
+    text-align: center;
+    padding: 3rem 2rem;
+    display: none;
+  }
+
+  .celebration.show { display: block; }
+
+  .confetti-emoji { font-size: 4rem; margin-bottom: 1rem; animation: bounce 0.6s ease infinite alternate; }
+  @keyframes bounce { from { transform: scale(1); } to { transform: scale(1.1); } }
+
+  .celebration h2 {
+    font-family: 'Syne', sans-serif;
+    font-size: 2rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, var(--accent1), var(--accent3));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 0.5rem;
+  }
+
+  /* LISTENING SPECIFIC */
+  .audio-player-custom {
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .audio-waveform {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+    height: 50px;
+    margin: 1rem 0;
+  }
+
+  .wave-bar {
+    width: 4px;
+    border-radius: 2px;
+    background: var(--accent1);
+    opacity: 0.4;
+    transition: height 0.1s;
+  }
+
+  .wave-bar.active { opacity: 1; animation: wave-anim 0.8s ease infinite; }
+
+  @keyframes wave-anim {
+    0%, 100% { transform: scaleY(0.4); }
+    50% { transform: scaleY(1); }
+  }
+
+  .audio-controls {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .play-pause-btn {
+    width: 48px; height: 48px;
+    border-radius: 50%;
+    border: none;
+    background: var(--accent1);
+    color: #fff;
+    font-size: 1.1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    flex-shrink: 0;
+  }
+
+  .play-pause-btn:hover { transform: scale(1.08); }
+
+  .speed-btn {
+    padding: 5px 12px;
+    border-radius: 100px;
+    border: 1px solid var(--border);
+    background: var(--card);
+    color: var(--text2);
+    font-size: 0.78rem;
+    cursor: pointer;
+    font-family: 'DM Sans', sans-serif;
+    transition: all 0.2s;
+  }
+
+  .speed-btn.active { border-color: var(--accent1); color: var(--accent1); background: rgba(108,99,255,0.1); }
+
+  /* Vocab highlight */
+  .vocab-word {
+    border-bottom: 1px dashed var(--accent4);
+    color: var(--accent4);
+    cursor: help;
+    position: relative;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 600px) {
+    .skills-grid { grid-template-columns: 1fr; }
+    .role-cards { grid-template-columns: 1fr; }
+    .modal { border-radius: 16px; }
+    .modal-header { padding: 1.25rem; }
+    .modal-body { padding: 1.25rem; }
+  }
+
+  /* Floating elements */
+  .float-anim { animation: float 4s ease-in-out infinite; }
+  @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+
+  /* Tooltip */
+  [data-tip] { position: relative; }
+  [data-tip]:hover::after {
+    content: attr(data-tip);
+    position: absolute;
+    bottom: calc(100% + 8px);
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    color: var(--text);
+    font-size: 0.78rem;
+    padding: 5px 12px;
+    border-radius: 8px;
+    white-space: nowrap;
+    z-index: 100;
+    pointer-events: none;
+  }
+</style>
+</head>
+<body>
+
+<div class="orb orb-1"></div>
+<div class="orb orb-2"></div>
+<div class="orb orb-3"></div>
+
+<nav>
+  <div class="nav-logo">✦ English Hub</div>
+  <div style="display:flex;align-items:center;gap:12px;">
+    <span class="score-badge" id="totalScore">⭐ 0 pts</span>
+    <span class="nav-badge">Intermediate B1</span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-tag">Actividad Extraescolar · Inglés Intermedio · By Kamps Tepes </div>
+  <h1 class="hero-title">Learn English<br><span>the fun way</span></h1>
+  <p class="hero-sub">Practica las 4 habilidades del idioma inglés con diálogos reales, audio, quizzes y práctica en pareja.</p>
+</div>
+
+<!-- SKILLS GRID -->
+<div class="skills-grid">
+
+  <!-- LISTENING -->
+  <div class="skill-card card-listen" onclick="openModal('listen')">
+    <span class="skill-icon float-anim">🎧</span>
+    <div class="skill-title" style="color:#a09bff">Listening</div>
+    <div class="skill-desc">Escucha diálogos reales y mejora tu comprensión auditiva. ¡Prueba diferentes velocidades!</div>
+    <div class="skill-topics">
+      <span class="topic-tag">At the café</span>
+      <span class="topic-tag">Job interview</span>
+      <span class="topic-tag">Travel plans</span>
+    </div>
+    <br>
+    <button class="skill-btn btn-purple">Start listening →</button>
+  </div>
+
+  <!-- READING -->
+  <div class="skill-card card-read" onclick="openModal('read')">
+    <span class="skill-icon float-anim" style="animation-delay:0.5s">📖</span>
+    <div class="skill-title" style="color:#43e8a0">Reading</div>
+    <div class="skill-desc">Lee diálogos y textos con vocabulario resaltado. Comprensión con preguntas al final.</div>
+    <div class="skill-topics">
+      <span class="topic-tag">Daily routines</span>
+      <span class="topic-tag">Shopping</span>
+      <span class="topic-tag">Opinions</span>
+    </div>
+    <br>
+    <button class="skill-btn btn-green">Start reading →</button>
+  </div>
+
+  <!-- WRITING -->
+  <div class="skill-card card-write" onclick="openModal('write')">
+    <span class="skill-icon float-anim" style="animation-delay:1s">✍️</span>
+    <div class="skill-title" style="color:#ffb347">Writing</div>
+    <div class="skill-desc">Practica responder en inglés. Escribe y compara con la respuesta modelo sugerida.</div>
+    <div class="skill-topics">
+      <span class="topic-tag">Introductions</span>
+      <span class="topic-tag">Opinions</span>
+      <span class="topic-tag">Narrative</span>
+    </div>
+    <br>
+    <button class="skill-btn btn-amber">Start writing →</button>
+  </div>
+
+  <!-- SPEAKING -->
+  <div class="skill-card card-speak" onclick="openModal('speak')">
+    <span class="skill-icon float-anim" style="animation-delay:1.5s">🎤</span>
+    <div class="skill-title" style="color:#ff6584">Speaking</div>
+    <div class="skill-desc">Practica pronunciación en voz alta y ensaya los diálogos con un compañero de clase.</div>
+    <div class="skill-topics">
+      <span class="topic-tag">Role-plays</span>
+      <span class="topic-tag">Debates</span>
+      <span class="topic-tag">Presentations</span>
+    </div>
+    <br>
+    <button class="skill-btn btn-pink">Start speaking →</button>
+  </div>
+
+</div>
+
+<!-- ============================================================ -->
+<!-- LISTENING MODAL -->
+<!-- ============================================================ -->
+<div class="modal-overlay" id="modal-listen">
+  <div class="modal">
+    <div class="modal-header">
+      <div class="modal-title-area">
+        <span class="modal-icon">🎧</span>
+        <div>
+          <div class="modal-title">Listening Practice</div>
+          <div class="modal-subtitle">Escucha · Comprende · Responde</div>
+        </div>
+      </div>
+      <button class="close-btn" onclick="closeModal('listen')">✕</button>
+    </div>
+    <div class="modal-body">
+
+      <!-- Tabs for scenes -->
+      <div class="tabs" id="listen-tabs">
+        <button class="tab-btn active" onclick="switchScene('listen',0,this)">☕ Café</button>
+        <button class="tab-btn" onclick="switchScene('listen',1,this)">💼 Job</button>
+        <button class="tab-btn" onclick="switchScene('listen',2,this)">✈️ Travel</button>
+      </div>
+
+      <!-- SCENE 0: At the café -->
+      <div class="dialog-scene active" id="listen-scene-0">
+        <div class="scene-intro">
+          <div class="scene-label">📍 Scene 1</div>
+          <div class="scene-title">At the Café — Ordering coffee & making plans</div>
+          <div class="scene-hint">Click ▶ next to each line to hear it spoken aloud.</div>
+        </div>
+
+        <div class="audio-player-custom">
+          <div style="font-size:0.82rem;color:var(--text3);margin-bottom:0.5rem;">Listening speed</div>
+          <div style="display:flex;gap:6px;margin-bottom:1rem;">
+            <button class="speed-btn active" onclick="setRate(0.7,this)">0.7×</button>
+            <button class="speed-btn" onclick="setRate(1,this)">1×</button>
+            <button class="speed-btn" onclick="setRate(1.3,this)">1.3×</button>
+          </div>
+          <div class="audio-waveform" id="waveform-listen0">
+            <div class="wave-bar" style="height:20px"></div><div class="wave-bar" style="height:35px"></div><div class="wave-bar" style="height:50px"></div><div class="wave-bar" style="height:28px"></div><div class="wave-bar" style="height:42px"></div><div class="wave-bar" style="height:18px"></div><div class="wave-bar" style="height:38px"></div><div class="wave-bar" style="height:50px"></div><div class="wave-bar" style="height:30px"></div><div class="wave-bar" style="height:22px"></div><div class="wave-bar" style="height:44px"></div><div class="wave-bar" style="height:16px"></div><div class="wave-bar" style="height:36px"></div><div class="wave-bar" style="height:48px"></div><div class="wave-bar" style="height:26px"></div>
+          </div>
+        </div>
+
+        <div class="dialogue">
+          <div class="bubble-wrap left">
+            <div class="avatar" style="background:rgba(108,99,255,0.2);color:var(--accent1)">S</div>
+            <div class="bubble left">
+              <div class="bubble-name">Server</div>
+              <div class="bubble-text">
+                <div class="en">Hi there! What can I get for you today?</div>
+                <div class="es">¡Hola! ¿Qué le puedo traer hoy?</div>
+              </div>
+              <button class="play-btn" onclick="playDialogueAudio(this, 'Hi there! What can I get for you today?')">▶ Listen</button>
+            </div>
+          </div>
+
+          <div class="bubble-wrap right">
+            <div class="avatar" style="background:rgba(255,101,132,0.2);color:var(--accent2)">M</div>
+            <div class="bubble right">
+              <div class="bubble-name">Maya</div>
+              <div class="bubble-text">
+                <div class="en">I'd like a medium latte, please. And could I get an extra shot of espresso?</div>
+                <div class="es">Quisiera un latte mediano, por favor. ¿Y podría llevar un shot extra de espresso?</div>
+              </div>
+              <button class="play-btn" onclick="playDialogueAudio(this, 'I\'d like a medium latte, please. And could I get an extra shot of espresso?')">▶ Listen</button>
+            </div>
+          </div>
+
+          <div class="bubble-wrap left">
+            <div class="avatar" style="background:rgba(108,99,255,0.2);color:var(--accent1)">S</div>
+            <div class="bubble left">
+              <div class="bubble-name">Server</div>
+              <div class="bubble-text">
+                <div class="en">Of course! That'll be four fifty. Are you here to meet someone?</div>
+                <div class="es">¡Claro! Son cuatro cincuenta. ¿Viene a encontrarse con alguien?</div>
+              </div>
+              <button class="play-btn" onclick="playDialogueAudio(this, 'Of course! That\'ll be four fifty. Are you here to meet someone?')">▶ Listen</button>
+            </div>
+          </div>
+
+          <div class="bubble-wrap right">
+            <div class="avatar" style="background:rgba(255,101,132,0.2);color:var(--accent2)">M</div>
+            <div class="bubble right">
+              <div class="bubble-name">Maya</div>
+              <div class="bubble-text">
+                <div class="en">Actually, I'm working on a project. I'll probably be here for a couple of hours. Is that okay?</div>
+                <div class="es">En realidad, estoy trabajando en un proyecto. Probablemente estaré aquí un par de horas. ¿Está bien?</div>
+              </div>
+              <button class="play-btn" onclick="playDialogueAudio(this, 'Actually, I\'m working on a project. I\'ll probably be here for a couple of hours. Is that okay?')">▶ Listen</button>
+            </div>
+          </div>
+
+          <div class="bubble-wrap left">
+            <div class="avatar" style="background:rgba(108,99,255,0.2);color:var(--accent1)">S</div>
+            <div class="bubble left">
+              <div class="bubble-name">Server</div>
+              <div class="bubble-text">
+                <div class="en">Absolutely, take your time! We have free Wi-Fi if you need it. The password is on the board.</div>
+                <div class="es">¡Por supuesto, tómese su tiempo! Tenemos Wi-Fi gratuito si lo necesita. La contraseña está en el pizarrón.</div>
+              </div>
+              <button class="play-btn" onclick="playDialogueAudio(this, 'Absolutely, take your time! We have free Wi-Fi if you need it. The password is on the board.')">▶ Listen</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Comprehension Quiz -->
+        <div class="quiz-area">
+          <div class="quiz-label">🎯 Comprehension check</div>
+          <div class="quiz-q">What does Maya order?</div>
+          <div class="quiz-options">
+            <button class="quiz-opt" onclick="checkAnswer(this,'wrong','listen-fb-0')">A regular black coffee</button>
+            <button class="quiz-opt" onclick="checkAnswer(this,'correct','listen-fb-0')">A medium latte with an extra espresso shot</button>
+            <button class="quiz-opt" onclick="checkAnswer(this,'wrong','listen-fb-0')">A cappuccino and a sandwich</button>
+          </div>
+          <div class="quiz-feedback" id="listen-fb-0">
+            <span>✓ Correct! Maya said "I'd like a medium latte... could I get an extra shot of espresso?"</span>
+          </div>
+        </div>
+
+        <div class="quiz-area" style="margin-top:1rem">
+          <div class="quiz-label">🎯 Comprehension check 2</div>
+          <div class="quiz-q">Why is Maya staying at the café for a long time?</div>
+          <div class="quiz-options">
+            <button class="quiz-opt" onclick="checkAnswer(this,'wrong','listen-fb-1')">She is waiting for a friend</button>
+            <button class="quiz-opt" onclick="checkAnswer(this,'wrong','listen-fb-1')">She has a job interview there</button>
+            <button class="quiz-opt" onclick="checkAnswer(this,'correct','listen-fb-1')">She is working on a project</button>
+          </div>
+          <div class="quiz-feedback" id="listen-fb-1">
+            <span>✓ Correct! She said "I'm working on a project."</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- SCENE 1: Job Interview -->
+      <div class="dialog-scene" id="listen-scene-1">
+        <div class="scene-intro">
+          <div class="scene-label">📍 Scene 2</div>
+          <div class="scene-title">Job Interview — Common questions & answers</div>
+          <div class="scene-hint">Listen carefully — interviews use formal language!</div>
+        </div>
+        <div class="dialogue">
+          <div class="bubble-wrap left">
+            <div class="avatar" style="background:rgba(108,99,255,0.2);color:var(--accent1)">I</div>
+            <div class="bubble left">
+              <div class="bubble-name">Interviewer</div>
+              <div class="bubble-text">
+                <div class="en">Good morning! Please, have a seat. Could you tell me a little about yourself?</div>
+                <div class="es">¡Buenos días! Por favor tome asiento. ¿Podría hablarme un poco de usted?</div>
+              </div>
+              <button class="play-btn" onclick="playDialogueAudio(this, 'Good morning! Please, have a seat. Could you tell me a little about yourself?')">▶ Listen</button>
+            </div>
+          </div>
+          <div class="bubble-wrap right">
+            <div class="avatar" style="background:rgba(67,232,160,0.2);color:var(--accent3)">C</div>
+            <div class="bubble right">
+              <div class="bubble-name">Candidate</div>
+              <div class="bubble-text">
+                <div class="en">Sure! I have three years of experience in marketing. I'm very organized and I really enjoy working with teams.</div>
+                <div class="es">¡Claro! Tengo tres años de experiencia en marketing. Soy muy organizado y disfruto mucho trabajar en equipo.</div>
+              </div>
+              <button class="play-btn" onclick="playDialogueAudio(this, 'Sure! I have three years of experience in marketing. I\'m very organized and I really enjoy working with teams.')">▶ Listen</button>
+            </div>
+          </div>
+          <div class="bubble-wrap left">
+            <div class="avatar" style="background:rgba(108,99,255,0.2);color:var(--accent1)">I</div>
+            <div class="bubble left">
+              <div class="bubble-name">Interviewer</div>
+              <div class="bubble-text">
+                <div class="en">What would you say is your biggest strength?</div>
+                <div class="es">¿Cuál diría que es su mayor fortaleza?</div>
+              </div>
+              <button class="play-btn" onclick="playDialogueAudio(this, 'What would you say is your biggest strength?')">▶ Listen</button>
+            </div>
+          </div>
+          <div class="bubble-wrap right">
+            <div class="avatar" style="background:rgba(67,232,160,0.2);color:var(--accent3)">C</div>
+            <div class="bubble right">
+              <div class="bubble-name">Candidate</div>
+              <div class="bubble-text">
+                <div class="en">I think my strongest point is problem-solving. I stay calm under pressure and I always look for creative solutions.</div>
+                <div class="es">Creo que mi punto más fuerte es la resolución de problemas. Mantengo la calma bajo presión y siempre busco soluciones creativas.</div>
+              </div>
+              <button class="play-btn" onclick="playDialogueAudio(this, 'I think my strongest point is problem-solving. I stay calm under pressure and I always look for creative solutions.')">▶ Listen</button>
+            </div>
+          </div>
+        </div>
+        <div class="quiz-area">
+          <div class="quiz-label">🎯 Comprehension check</div>
+          <div class="quiz-q">How many years of experience does the candidate have?</div>
+          <div class="quiz-options">
+            <button class="quiz-opt" onclick="checkAnswer(this,'wrong','jb-fb-0')">One year</button>
+            <button class="quiz-opt" onclick="checkAnswer(this,'wrong','jb-fb-0')">Five years</button>
+            <button class="quiz-opt" onclick="checkAnswer(this,'correct','jb-fb-0')">Three years</button>
+          </div>
+          <div class="quiz-feedback" id="jb-fb-0"><span>✓ "I have three years of experience in marketing."</span></div>
+        </div>
+      </div>
+
+      <!-- SCENE 2: Travel -->
+      <div class="dialog-scene" id="listen-scene-2">
+        <div class="scene-intro">
+          <div class="scene-label">📍 Scene 3</div>
+          <div class="scene-title">Travel Plans — Booking a trip with a friend</div>
+          <div class="scene-hint">Pay attention to future tenses: will, going to, might.</div>
+        </div>
+        <div class="dialogue">
+          <div class="bubble-wrap left">
+            <div class="avatar" style="background:rgba(255,179,71,0.2);color:var(--accent4)">A</div>
+            <div class="bubble left">
+              <div class="bubble-name">Alex</div>
+              <div class="bubble-text">
+                <div class="en">I'm thinking of going to Portugal this summer. Have you ever been there?</div>
+                <div class="es">Estoy pensando en ir a Portugal este verano. ¿Has estado alguna vez allí?</div>
+              </div>
+              <button class="play-btn" onclick="playDialogueAudio(this, 'I\'m thinking of going to Portugal this summer. Have you ever been there?')">▶ Listen</button>
+            </div>
+          </div>
+          <div class="bubble-wrap right">
+            <div class="avatar" style="background:rgba(255,101,132,0.2);color:var(--accent2)">B</div>
+            <div class="bubble right">
+              <div class="bubble-name">Bella</div>
+              <div class="bubble-text">
+                <div class="en">Yes! I went last year. It's absolutely beautiful. You'll love it. Are you going alone?</div>
+                <div class="es">¡Sí! Fui el año pasado. Es absolutamente hermoso. Te encantará. ¿Vas solo?</div>
+              </div>
+              <button class="play-btn" onclick="playDialogueAudio(this, 'Yes! I went last year. It\'s absolutely beautiful. You\'ll love it. Are you going alone?')">▶ Listen</button>
+            </div>
+          </div>
+          <div class="bubble-wrap left">
+            <div class="avatar" style="background:rgba(255,179,71,0.2);color:var(--accent4)">A</div>
+            <div class="bubble left">
+              <div class="bubble-name">Alex</div>
+              <div class="bubble-text">
+                <div class="en">I might invite my cousin. We haven't decided yet. What places would you recommend?</div>
+                <div class="es">Podría invitar a mi primo. Todavía no hemos decidido. ¿Qué lugares recomendarías?</div>
+              </div>
+              <button class="play-btn" onclick="playDialogueAudio(this, 'I might invite my cousin. We haven\'t decided yet. What places would you recommend?')">▶ Listen</button>
+            </div>
+          </div>
+          <div class="bubble-wrap right">
+            <div class="avatar" style="background:rgba(255,101,132,0.2);color:var(--accent2)">B</div>
+            <div class="bubble right">
+              <div class="bubble-name">Bella</div>
+              <div class="bubble-text">
+                <div class="en">Definitely Lisbon and Sintra. If you have time, the Algarve coast is stunning — the beaches are incredible!</div>
+                <div class="es">Definitivamente Lisboa y Sintra. Si tienes tiempo, la costa del Algarve es impresionante, ¡las playas son increíbles!</div>
+              </div>
+              <button class="play-btn" onclick="playDialogueAudio(this, 'Definitely Lisbon and Sintra. If you have time, the Algarve coast is stunning — the beaches are incredible!')">▶ Listen</button>
+            </div>
+          </div>
+        </div>
+        <div class="quiz-area">
+          <div class="quiz-label">🎯 Comprehension check</div>
+          <div class="quiz-q">Which places does Bella recommend?</div>
+          <div class="quiz-options">
+            <button class="quiz-opt" onclick="checkAnswer(this,'wrong','tr-fb-0')">Porto and the Douro Valley</button>
+            <button class="quiz-opt" onclick="checkAnswer(this,'correct','tr-fb-0')">Lisbon, Sintra and the Algarve coast</button>
+            <button class="quiz-opt" onclick="checkAnswer(this,'wrong','tr-fb-0')">Madrid and Barcelona</button>
+          </div>
+          <div class="quiz-feedback" id="tr-fb-0"><span>✓ "Definitely Lisbon and Sintra... the Algarve coast."</span></div>
+        </div>
+      </div>
+
+    </div>
+    <div class="modal-nav">
+      <button class="nav-btn" onclick="closeModal('listen')">← Back</button>
+      <span class="scene-counter" id="listen-counter">Scene 1 of 3</span>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- READING MODAL -->
+<!-- ============================================================ -->
+<div class="modal-overlay" id="modal-read">
+  <div class="modal">
+    <div class="modal-header">
+      <div class="modal-title-area">
+        <span class="modal-icon">📖</span>
+        <div>
+          <div class="modal-title">Reading Practice</div>
+          <div class="modal-subtitle">Lee · Comprende · Analiza</div>
+        </div>
+      </div>
+      <button class="close-btn" onclick="closeModal('read')">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="tabs">
+        <button class="tab-btn active" onclick="switchScene('read',0,this)">🛍 Shopping</button>
+        <button class="tab-btn" onclick="switchScene('read',1,this)">💬 Opinions</button>
+        <button class="tab-btn" onclick="switchScene('read',2,this)">🏡 Daily life</button>
+      </div>
+
+      <!-- SCENE 0: Shopping -->
+      <div class="dialog-scene active" id="read-scene-0">
+        <div class="scene-intro">
+          <div class="scene-label" style="border-left-color:var(--accent3)">📍 Dialogue 1</div>
+          <div class="scene-title">Shopping for clothes — Returns & exchanges</div>
+          <div class="scene-hint">Words underlined in <span style="color:var(--accent4)">gold</span> are key vocabulary. Read them carefully.</div>
+        </div>
+
+        <div class="dialogue">
+          <div class="bubble-wrap left">
+            <div class="avatar" style="background:rgba(67,232,160,0.15);color:var(--accent3)">C</div>
+            <div class="bubble left">
+              <div class="bubble-name">Customer</div>
+              <div class="bubble-text">
+                <div class="en">Excuse me, I bought this jacket last week but I'd like to <span class="vocab-word" data-tip="devolver/cambiar">return</span> it. The <span class="vocab-word" data-tip="talla/medida">size</span> is too small.</div>
+                <div class="es">Disculpe, compré esta chaqueta la semana pasada pero me gustaría devolverla. La talla es demasiado pequeña.</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="bubble-wrap right">
+            <div class="avatar" style="background:rgba(255,179,71,0.15);color:var(--accent4)">A</div>
+            <div class="bubble right">
+              <div class="bubble-name">Assistant</div>
+              <div class="bubble-text">
+                <div class="en">No problem at all! Do you have your <span class="vocab-word" data-tip="recibo">receipt</span>? We can <span class="vocab-word" data-tip="cambiar por otro">exchange</span> it for a larger size or give you a full <span class="vocab-word" data-tip="reembolso">refund</span>.</div>
+                <div class="es">¡Sin problema! ¿Tiene su recibo? Podemos cambiarlo por una talla más grande o hacerle un reembolso completo.</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="bubble-wrap left">
+            <div class="avatar" style="background:rgba(67,232,160,0.15);color:var(--accent3)">C</div>
+            <div class="bubble left">
+              <div class="bubble-name">Customer</div>
+              <div class="bubble-text">
+                <div class="en">I have it here. I'd <span class="vocab-word" data-tip="preferiría">rather</span> exchange it if you have a medium in stock. I love the colour and the style!</div>
+                <div class="es">Lo tengo aquí. Preferiría cambiarlo si tienen una mediana en existencia. ¡Me encanta el color y el estilo!</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="bubble-wrap right">
+            <div class="avatar" style="background:rgba(255,179,71,0.15);color:var(--accent4)">A</div>
+            <div class="bubble right">
+              <div class="bubble-name">Assistant</div>
+              <div class="bubble-text">
+                <div class="en">Let me check... Yes, we do! Here you go. The <span class="vocab-word" data-tip="probadores">fitting rooms</span> are on your right if you want to try it on first.</div>
+                <div class="es">Déjeme revisar... ¡Sí tenemos! Aquí tiene. Los probadores están a su derecha si quiere probársela primero.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="quiz-area">
+          <div class="quiz-label">📚 Vocabulary quiz</div>
+          <div class="quiz-q">What does "exchange" mean in this context?</div>
+          <div class="quiz-options">
+            <button class="quiz-opt" onclick="checkAnswer(this,'wrong','rd-fb-0')">To pay with foreign currency</button>
+            <button class="quiz-opt" onclick="checkAnswer(this,'correct','rd-fb-0')">To swap one item for another</button>
+            <button class="quiz-opt" onclick="checkAnswer(this,'wrong','rd-fb-0')">To return and get money back</button>
+          </div>
+          <div class="quiz-feedback" id="rd-fb-0"><span>✓ "Exchange" = swap/cambiar por otro artículo. "Refund" is when you get money back.</span></div>
+        </div>
+
+        <div class="quiz-area" style="margin-top:1rem">
+          <div class="quiz-label">📚 Comprehension</div>
+          <div class="quiz-q">What does the customer ultimately prefer?</div>
+          <div class="quiz-options">
+            <button class="quiz-opt" onclick="checkAnswer(this,'wrong','rd-fb-1')">A full refund</button>
+            <button class="quiz-opt" onclick="checkAnswer(this,'correct','rd-fb-1')">An exchange for a medium size</button>
+            <button class="quiz-opt" onclick="checkAnswer(this,'wrong','rd-fb-1')">A different colour jacket</button>
+          </div>
+          <div class="quiz-feedback" id="rd-fb-1"><span>✓ She said "I'd rather exchange it... I love the colour and the style!"</span></div>
+        </div>
+      </div>
+
+      <!-- SCENE 1: Opinions -->
+      <div class="dialog-scene" id="read-scene-1">
+        <div class="scene-intro">
+          <div class="scene-label" style="border-left-color:var(--accent3)">📍 Dialogue 2</div>
+          <div class="scene-title">Sharing opinions — Social media debate</div>
+          <div class="scene-hint">Notice how each speaker expresses agreement and disagreement politely.</div>
+        </div>
+        <div class="dialogue">
+          <div class="bubble-wrap left">
+            <div class="avatar" style="background:rgba(108,99,255,0.2);color:var(--accent1)">T</div>
+            <div class="bubble left">
+              <div class="bubble-name">Tom</div>
+              <div class="bubble-text">
+                <div class="en">I think social media has a <span class="vocab-word" data-tip="negativo">negative</span> impact on teenagers. They spend too much time online instead of being active.</div>
+                <div class="es">Creo que las redes sociales tienen un impacto negativo en los adolescentes. Pasan demasiado tiempo en línea en lugar de ser activos.</div>
+              </div>
+            </div>
+          </div>
+          <div class="bubble-wrap right">
+            <div class="avatar" style="background:rgba(67,232,160,0.2);color:var(--accent3)">L</div>
+            <div class="bubble right">
+              <div class="bubble-name">Lily</div>
+              <div class="bubble-text">
+                <div class="en">I see your point, but I <span class="vocab-word" data-tip="parcialmente en desacuerdo">partly disagree</span>. Social media also helps young people stay <span class="vocab-word" data-tip="conectados">connected</span> and learn new things.</div>
+                <div class="es">Entiendo tu punto, pero estoy parcialmente en desacuerdo. Las redes sociales también ayudan a los jóvenes a mantenerse conectados y aprender cosas nuevas.</div>
+              </div>
+            </div>
+          </div>
+          <div class="bubble-wrap left">
+            <div class="avatar" style="background:rgba(108,99,255,0.2);color:var(--accent1)">T</div>
+            <div class="bubble left">
+              <div class="bubble-name">Tom</div>
+              <div class="bubble-text">
+                <div class="en">That's a fair point. I <span class="vocab-word" data-tip="admito/reconozco">admit</span> it depends on how you use it. <span class="vocab-word" data-tip="moderación">Moderation</span> is key.</div>
+                <div class="es">Es un punto justo. Admito que depende de cómo lo uses. La moderación es la clave.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="quiz-area">
+          <div class="quiz-label">📚 Opinion language</div>
+          <div class="quiz-q">Which phrase shows PARTIAL disagreement?</div>
+          <div class="quiz-options">
+            <button class="quiz-opt" onclick="checkAnswer(this,'wrong','op-fb-0')">That's a fair point</button>
+            <button class="quiz-opt" onclick="checkAnswer(this,'correct','op-fb-0')">I see your point, but I partly disagree</button>
+            <button class="quiz-opt" onclick="checkAnswer(this,'wrong','op-fb-0')">Moderation is key</button>
+          </div>
+          <div class="quiz-feedback" id="op-fb-0"><span>✓ "I see your point, but..." = acknowledges the other person before disagreeing politely.</span></div>
+        </div>
+      </div>
+
+      <!-- SCENE 2: Daily Life -->
+      <div class="dialog-scene" id="read-scene-2">
+        <div class="scene-intro">
+          <div class="scene-label" style="border-left-color:var(--accent3)">📍 Dialogue 3</div>
+          <div class="scene-title">Daily routines — Talking about habits</div>
+          <div class="scene-hint">Focus on frequency adverbs: always, usually, often, sometimes, rarely, never.</div>
+        </div>
+        <div class="dialogue">
+          <div class="bubble-wrap left">
+            <div class="avatar" style="background:rgba(255,101,132,0.2);color:var(--accent2)">J</div>
+            <div class="bubble left">
+              <div class="bubble-name">Jamie</div>
+              <div class="bubble-text">
+                <div class="en">Do you <span class="vocab-word" data-tip="raramente">rarely</span> cook at home? I <span class="vocab-word" data-tip="usualmente">usually</span> prepare my meals on Sundays for the whole week.</div>
+                <div class="es">¿Raramente cocinas en casa? Yo usualmente preparo mis comidas los domingos para toda la semana.</div>
+              </div>
+            </div>
+          </div>
+          <div class="bubble-wrap right">
+            <div class="avatar" style="background:rgba(67,232,160,0.2);color:var(--accent3)">R</div>
+            <div class="bubble right">
+              <div class="bubble-name">Ria</div>
+              <div class="bubble-text">
+                <div class="en">I <span class="vocab-word" data-tip="a veces">sometimes</span> cook, but I'm not very confident in the kitchen. I <span class="vocab-word" data-tip="frecuentemente">often</span> order takeaway after work — it's just easier!</div>
+                <div class="es">A veces cocino, pero no tengo mucha confianza en la cocina. Con frecuencia pido a domicilio después del trabajo, ¡es simplemente más fácil!</div>
+              </div>
+            </div>
+          </div>
+          <div class="bubble-wrap left">
+            <div class="avatar" style="background:rgba(255,101,132,0.2);color:var(--accent2)">J</div>
+            <div class="bubble left">
+              <div class="bubble-name">Jamie</div>
+              <div class="bubble-text">
+                <div class="en">I <span class="vocab-word" data-tip="nunca">never</span> order food anymore. Meal <span class="vocab-word" data-tip="preparación anticipada">prepping</span> saves me so much money. I could teach you some easy recipes!</div>
+                <div class="es">Ya nunca hago pedidos de comida. La preparación de comidas me ahorra mucho dinero. ¡Podría enseñarte algunas recetas fáciles!</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="quiz-area">
+          <div class="quiz-label">📚 Frequency adverbs</div>
+          <div class="quiz-q">Order these adverbs from most frequent to least: sometimes, always, rarely, often</div>
+          <div class="quiz-options">
+            <button class="quiz-opt" onclick="checkAnswer(this,'correct','dl-fb-0')">Always → Often → Sometimes → Rarely</button>
+            <button class="quiz-opt" onclick="checkAnswer(this,'wrong','dl-fb-0')">Often → Always → Rarely → Sometimes</button>
+            <button class="quiz-opt" onclick="checkAnswer(this,'wrong','dl-fb-0')">Sometimes → Always → Often → Rarely</button>
+          </div>
+          <div class="quiz-feedback" id="dl-fb-0"><span>✓ Always (100%) → Usually → Often → Sometimes → Rarely → Never (0%)</span></div>
+        </div>
+      </div>
+
+    </div>
+    <div class="modal-nav">
+      <button class="nav-btn" onclick="closeModal('read')">← Back</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- WRITING MODAL -->
+<!-- ============================================================ -->
+<div class="modal-overlay" id="modal-write">
+  <div class="modal">
+    <div class="modal-header">
+      <div class="modal-title-area">
+        <span class="modal-icon">✍️</span>
+        <div>
+          <div class="modal-title">Writing Practice</div>
+          <div class="modal-subtitle">Escribe · Compara · Mejora</div>
+        </div>
+      </div>
+      <button class="close-btn" onclick="closeModal('write')">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="tabs">
+        <button class="tab-btn active" onclick="switchScene('write',0,this)">👋 Intro</button>
+        <button class="tab-btn" onclick="switchScene('write',1,this)">💭 Opinion</button>
+        <button class="tab-btn" onclick="switchScene('write',2,this)">📝 Story</button>
+      </div>
+
+      <!-- SCENE 0 -->
+      <div class="dialog-scene active" id="write-scene-0">
+        <div class="scene-intro" style="border-left-color:var(--accent4)">
+          <div class="scene-label" style="color:var(--accent4)">✍ Task 1 — Self introduction</div>
+          <div class="scene-title">Read the dialogue, then write your own introduction below</div>
+          <div class="scene-hint">Use present simple for habits and be + adjective for descriptions. Aim for 40–60 words.</div>
+        </div>
+        <div class="dialogue">
+          <div class="bubble-wrap left">
+            <div class="avatar" style="background:rgba(255,179,71,0.2);color:var(--accent4)">P</div>
+            <div class="bubble left">
+              <div class="bubble-name">Professor</div>
+              <div class="bubble-text">
+                <div class="en">Welcome everyone! Could each of you introduce yourself? Tell us your name, where you're from, and one interesting thing about you.</div>
+                <div class="es">¡Bienvenidos! ¿Podría cada uno presentarse? Díganos su nombre, de dónde es y algo interesante sobre usted.</div>
+              </div>
+            </div>
+          </div>
+          <div class="bubble-wrap right">
+            <div class="avatar" style="background:rgba(108,99,255,0.2);color:var(--accent1)">S</div>
+            <div class="bubble right">
+              <div class="bubble-name">Student (example)</div>
+              <div class="bubble-text">
+                <div class="en">Hi! My name is Carlos and I'm from Guadalajara, Mexico. I'm really passionate about photography, and in my free time I love exploring local markets to find interesting subjects to photograph.</div>
+                <div class="es">¡Hola! Me llamo Carlos y soy de Guadalajara, México. Me apasiona mucho la fotografía, y en mi tiempo libre me encanta explorar mercados locales para encontrar sujetos interesantes para fotografiar.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div style="margin-top:1rem">
+          <div style="font-size:0.85rem;color:var(--text2);margin-bottom:8px;font-weight:500">Your turn — write your introduction:</div>
+          <div class="write-area">
+            <textarea id="write-0" placeholder="Hi! My name is... I'm from... I'm interested in..." oninput="updateWordCount('write-0','wc-0')"></textarea>
+            <div class="write-toolbar">
+              <span class="word-count" id="wc-0">0 words</span>
+              <button class="check-btn" onclick="showModelAnswer('ma-0')">Show model answer</button>
+            </div>
+          </div>
+          <div class="model-answer" id="ma-0">
+            <strong>Model answer</strong>
+            Hello! My name is Ana and I'm originally from Oaxaca, Mexico. I'm currently studying English because I'd love to travel and work abroad in the future. In my spare time, I enjoy cooking traditional dishes and watching documentaries. I'm excited to improve my English this year!
+          </div>
+        </div>
+      </div>
+
+      <!-- SCENE 1: Opinion -->
+      <div class="dialog-scene" id="write-scene-1">
+        <div class="scene-intro" style="border-left-color:var(--accent4)">
+          <div class="scene-label" style="color:var(--accent4)">✍ Task 2 — Giving your opinion</div>
+          <div class="scene-title">Read the prompt and write your opinion paragraph</div>
+          <div class="scene-hint">Use opinion phrases: I think, I believe, In my opinion, I feel that... Aim for 50–70 words.</div>
+        </div>
+        <div class="dialogue">
+          <div class="bubble-wrap left">
+            <div class="avatar" style="background:rgba(255,101,132,0.2);color:var(--accent2)">T</div>
+            <div class="bubble left">
+              <div class="bubble-name">Teacher</div>
+              <div class="bubble-text">
+                <div class="en">"Do you think it's important to learn a second language? Why or why not?" — Write a short paragraph sharing your opinion. Give at least two reasons.</div>
+                <div class="es">¿Crees que es importante aprender un segundo idioma? ¿Por qué o por qué no? Escribe un párrafo corto compartiendo tu opinión. Da al menos dos razones.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div style="margin-top:1rem">
+          <div class="write-area">
+            <textarea id="write-1" placeholder="I think / I believe / In my opinion..." oninput="updateWordCount('write-1','wc-1')"></textarea>
+            <div class="write-toolbar">
+              <span class="word-count" id="wc-1">0 words</span>
+              <button class="check-btn" onclick="showModelAnswer('ma-1')">Show model answer</button>
+            </div>
+          </div>
+          <div class="model-answer" id="ma-1">
+            <strong>Model answer</strong>
+            In my opinion, learning a second language is extremely important in today's world. First of all, it opens up many professional opportunities since many companies require bilingual employees. Furthermore, it helps you understand different cultures and think in new ways. I believe that everyone should try to learn at least one foreign language during their lifetime.
+          </div>
+        </div>
+      </div>
+
+      <!-- SCENE 2: Story -->
+      <div class="dialog-scene" id="write-scene-2">
+        <div class="scene-intro" style="border-left-color:var(--accent4)">
+          <div class="scene-label" style="color:var(--accent4)">✍ Task 3 — Short narrative</div>
+          <div class="scene-title">Continue the story below in 3–4 sentences</div>
+          <div class="scene-hint">Use simple past for actions and was/were for descriptions. Add time expressions: then, after that, suddenly...</div>
+        </div>
+        <div class="dialogue">
+          <div class="bubble-wrap left">
+            <div class="avatar" style="background:rgba(108,99,255,0.2);color:var(--accent1)">📖</div>
+            <div class="bubble left">
+              <div class="bubble-name">Story starter</div>
+              <div class="bubble-text">
+                <div class="en">Last Saturday, I decided to try something completely different. I packed a small bag, put on my walking shoes, and headed to the train station without a plan...</div>
+                <div class="es">El sábado pasado, decidí intentar algo completamente diferente. Empaqué una bolsa pequeña, me puse mis zapatos para caminar y me dirigí a la estación de tren sin un plan...</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div style="margin-top:1rem">
+          <div class="write-area">
+            <textarea id="write-2" placeholder="Continue: I bought a ticket to... Then I..." oninput="updateWordCount('write-2','wc-2')"></textarea>
+            <div class="write-toolbar">
+              <span class="word-count" id="wc-2">0 words</span>
+              <button class="check-btn" onclick="showModelAnswer('ma-2')">Show model answer</button>
+            </div>
+          </div>
+          <div class="model-answer" id="ma-2">
+            <strong>Model answer (one possibility)</strong>
+            I bought a ticket to a small town I had never visited before. The journey took about an hour, and the scenery was absolutely beautiful. After that, I walked through the old town centre and discovered a lovely little café. I spent the afternoon reading and enjoying the quiet — it was exactly what I needed!
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="modal-nav">
+      <button class="nav-btn" onclick="closeModal('write')">← Back</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SPEAKING MODAL -->
+<!-- ============================================================ -->
+<div class="modal-overlay" id="modal-speak">
+  <div class="modal">
+    <div class="modal-header">
+      <div class="modal-title-area">
+        <span class="modal-icon">🎤</span>
+        <div>
+          <div class="modal-title">Speaking Practice</div>
+          <div class="modal-subtitle">Pronuncia · Practica · Fluye</div>
+        </div>
+      </div>
+      <button class="close-btn" onclick="closeModal('speak')">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="tabs">
+        <button class="tab-btn active" onclick="switchScene('speak',0,this)">🗣 Solo</button>
+        <button class="tab-btn" onclick="switchScene('speak',1,this)">👥 Partner A</button>
+        <button class="tab-btn" onclick="switchScene('speak',2,this)">👥 Partner B</button>
+        <button class="tab-btn" onclick="switchScene('speak',3,this)">🎭 Role-play</button>
+      </div>
+
+      <!-- SCENE 0: Solo practice -->
+      <div class="dialog-scene active" id="speak-scene-0">
+        <div class="scene-intro" style="border-left-color:var(--accent2)">
+          <div class="scene-label" style="color:var(--accent2)">🗣 Solo practice</div>
+          <div class="scene-title">Repeat after the audio — Focus on pronunciation & rhythm</div>
+          <div class="scene-hint">Press ▶ to hear the phrase, then press 🎤 and repeat it aloud.</div>
+        </div>
+
+        <div class="speak-area">
+          <div class="speak-instructions">Escucha cada frase y repítela en voz alta. Trata de igualar el ritmo y la entonación del audio.</div>
+          <div style="display:flex;flex-direction:column;gap:10px;margin:1.5rem 0;text-align:left">
+            <div id="phrase-0" class="bubble left" style="max-width:100%;cursor:pointer;border:1px solid var(--border);background:var(--bg3);" onclick="speakAndHighlight(this,'Would you mind repeating that, please?',0)">
+              <div class="en">Would you mind repeating that, please?</div>
+              <div class="es">¿Le importaría repetir eso, por favor?</div>
+              <button class="play-btn">▶ Hear it</button>
+            </div>
+            <div id="phrase-1" class="bubble left" style="max-width:100%;cursor:pointer;border:1px solid var(--border);background:var(--bg3);" onclick="speakAndHighlight(this,'I\'m afraid I don\'t quite understand.',1)">
+              <div class="en">I'm afraid I don't quite understand.</div>
+              <div class="es">Me temo que no entiendo del todo.</div>
+              <button class="play-btn">▶ Hear it</button>
+            </div>
+            <div id="phrase-2" class="bubble left" style="max-width:100%;cursor:pointer;border:1px solid var(--border);background:var(--bg3);" onclick="speakAndHighlight(this,'Could you speak a little more slowly, please?',2)">
+              <div class="en">Could you speak a little more slowly, please?</div>
+              <div class="es">¿Podría hablar un poco más despacio, por favor?</div>
+              <button class="play-btn">▶ Hear it</button>
+            </div>
+            <div id="phrase-3" class="bubble left" style="max-width:100%;cursor:pointer;border:1px solid var(--border);background:var(--bg3);" onclick="speakAndHighlight(this,'That\'s a really interesting point of view!',3)">
+              <div class="en">That's a really interesting point of view!</div>
+              <div class="es">¡Eso es un punto de vista realmente interesante!</div>
+              <button class="play-btn">▶ Hear it</button>
+            </div>
+            <div id="phrase-4" class="bubble left" style="max-width:100%;cursor:pointer;border:1px solid var(--border);background:var(--bg3);" onclick="speakAndHighlight(this,'I\'ve been learning English for about two years.',4)">
+              <div class="en">I've been learning English for about two years.</div>
+              <div class="es">He estado aprendiendo inglés por aproximadamente dos años.</div>
+              <button class="play-btn">▶ Hear it</button>
+            </div>
+          </div>
+
+          <div style="font-size:0.85rem;color:var(--text2);margin-bottom:1rem">Now grab your phone and try recording yourself!</div>
+          <button class="mic-btn" id="micBtn" onclick="toggleMic()">🎤</button>
+          <div class="speak-status" id="speakStatus">Toca el micrófono para practicar</div>
+
+          <div class="speaking-tips">
+            <span class="tip-chip">Speak clearly</span>
+            <span class="tip-chip">Don't rush</span>
+            <span class="tip-chip">Stress key words</span>
+            <span class="tip-chip">Use intonation</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- SCENE 1: Partner A -->
+      <div class="dialog-scene" id="speak-scene-1">
+        <div class="scene-intro" style="border-left-color:var(--accent2)">
+          <div class="scene-label" style="color:var(--accent2)">👥 Partner Practice — Student A</div>
+          <div class="scene-title">You are Student A — read only YOUR lines!</div>
+          <div class="scene-hint">Your partner has Student B's script. Take turns and react naturally!</div>
+        </div>
+        <div class="role-cards">
+          <div class="role-card" style="border-color:rgba(108,99,255,0.3)">
+            <div class="role-label role-person-a">🗣 You say (A):</div>
+            <div class="role-lines">
+              1. "Have you ever travelled abroad?"<br>
+              2. "What did you do there? Did you speak English?"<br>
+              3. "I think travelling is the best way to learn a language. Do you agree?"<br>
+              4. "What country would you most like to visit and why?"
+            </div>
+          </div>
+          <div class="role-card" style="opacity:0.4;border-style:dashed">
+            <div class="role-label" style="color:var(--text3)">🙈 Partner B says: (hidden)</div>
+            <div class="role-lines" style="color:var(--text3)">
+              Partner's lines are hidden.<br>React to what they say!<br>Ask follow-up questions.<br>Keep the conversation going!
+            </div>
+          </div>
+        </div>
+        <div class="speak-area" style="margin-top:1.5rem">
+          <div class="speak-instructions">💡 Tips for fluency:<br>• Ask "Really? Tell me more!"<br>• Use "That's interesting because..."<br>• Don't be afraid to pause and think</div>
+          <div class="speaking-tips" style="margin-top:1rem">
+            <span class="tip-chip">Have you ever...?</span>
+            <span class="tip-chip">What was it like?</span>
+            <span class="tip-chip">I think... because...</span>
+            <span class="tip-chip">What about you?</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- SCENE 2: Partner B -->
+      <div class="dialog-scene" id="speak-scene-2">
+        <div class="scene-intro" style="border-left-color:var(--accent2)">
+          <div class="scene-label" style="color:var(--accent2)">👥 Partner Practice — Student B</div>
+          <div class="scene-title">You are Student B — read only YOUR lines!</div>
+          <div class="scene-hint">Respond naturally. Add your own ideas and questions too!</div>
+        </div>
+        <div class="role-cards">
+          <div class="role-card" style="opacity:0.4;border-style:dashed">
+            <div class="role-label" style="color:var(--text3)">🙈 Student A says: (hidden)</div>
+            <div class="role-lines" style="color:var(--text3)">Student A's questions are hidden. Listen and respond!</div>
+          </div>
+          <div class="role-card" style="border-color:rgba(255,101,132,0.3)">
+            <div class="role-label role-person-b">🗣 You say (B):</div>
+            <div class="role-lines">
+              1. Answer if you've travelled — where/when.<br>
+              2. Describe what you did & if you spoke English.<br>
+              3. Agree or disagree with reasons.<br>
+              4. Name a country and explain why you'd go.
+            </div>
+          </div>
+        </div>
+        <div class="speak-area" style="margin-top:1.5rem">
+          <div class="speak-instructions">💡 Useful phrases to respond:<br>• "Yes, actually, I went to... last year"<br>• "I've never been abroad, but I'd love to go to..."<br>• "I totally agree / I'm not so sure about that"</div>
+          <div class="speaking-tips" style="margin-top:1rem">
+            <span class="tip-chip">Actually, I...</span>
+            <span class="tip-chip">Now that you mention it</span>
+            <span class="tip-chip">I'd love to visit...</span>
+            <span class="tip-chip">In my experience...</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- SCENE 3: Role play -->
+      <div class="dialog-scene" id="speak-scene-3">
+        <div class="scene-intro" style="border-left-color:var(--accent2)">
+          <div class="scene-label" style="color:var(--accent2)">🎭 Full Role-Play — Restaurant Scene</div>
+          <div class="scene-title">One person is the waiter, the other is the customer</div>
+          <div class="scene-hint">Try to speak for at least 3–4 minutes. Improvise — make it fun!</div>
+        </div>
+        <div class="role-cards">
+          <div class="role-card" style="border-color:rgba(108,99,255,0.3)">
+            <div class="role-label role-person-a">🧑‍🍳 Waiter / Waitress</div>
+            <div class="role-lines">
+              • Greet and seat the customer<br>
+              • Offer the menu and specials<br>
+              • Take the order (ask about allergies!)<br>
+              • Check if everything is OK<br>
+              • Bring the bill when asked
+            </div>
+          </div>
+          <div class="role-card" style="border-color:rgba(255,101,132,0.3)">
+            <div class="role-label role-person-b">🍽 Customer</div>
+            <div class="role-lines">
+              • Ask for recommendations<br>
+              • Order food and drinks<br>
+              • Ask about ingredients<br>
+              • Complain: one dish is wrong!<br>
+              • Ask for the bill politely
+            </div>
+          </div>
+        </div>
+
+        <div class="speak-area" style="margin-top:1.5rem">
+          <div class="speak-instructions" style="text-align:left">
+            🔑 <strong style="color:var(--text)">Useful phrases for the waiter:</strong><br>
+            "Are you ready to order?" · "I'd recommend the..." · "Would you like anything else?" · "I'm sorry, let me fix that right away."<br><br>
+            🔑 <strong style="color:var(--text)">Useful phrases for the customer:</strong><br>
+            "Could I see the menu, please?" · "What do you recommend?" · "I'm allergic to..." · "Excuse me, I ordered the... not the..." · "Could we get the bill, please?"
+          </div>
+        </div>
+
+        <div class="partner-section">
+          <div class="partner-title">⏱ Speaking timer</div>
+          <div class="partner-desc">Aim for a 4-minute conversation. Switch roles and try again!</div>
+          <div style="margin-top:1rem;text-align:center">
+            <div style="font-size:2.5rem;font-family:'Syne',sans-serif;font-weight:700;color:var(--accent3)" id="timer-display">4:00</div>
+            <div style="display:flex;gap:8px;justify-content:center;margin-top:0.75rem">
+              <button class="nav-btn" onclick="startTimer()" style="border-color:rgba(67,232,160,0.4);color:var(--accent3)">▶ Start</button>
+              <button class="nav-btn" onclick="resetTimer()">↺ Reset</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="modal-nav">
+      <button class="nav-btn" onclick="closeModal('speak')">← Back</button>
+    </div>
+  </div>
+</div>
+
+<!-- Footer -->
+<div style="position:relative;z-index:1;text-align:center;padding:2rem;color:var(--text3);font-size:0.82rem;border-top:1px solid var(--border);">
+  English Hub · Actividad Extraescolar "Inglés Intermedio" · Made with ❤️ for learning
+</div>
+
+<script>
+// ====== SPEECH SYNTHESIS ======
+let speechRate = 0.9;
+let currentUtterance = null; // To track the current speech
+
+// Function to stop any ongoing speech
+function stopCurrentSpeech() {
+  if ('speechSynthesis' in window) {
+    window.speechSynthesis.cancel();
+  }
+  // Reset all play buttons that might be in 'playing' state
+  document.querySelectorAll('.play-btn.playing').forEach(btn => {
+    btn.classList.remove('playing');
+    btn.textContent = '▶ Listen';
+  });
+  // Stop waveform animation if needed
+  document.querySelectorAll('.wave-bar.active').forEach(bar => bar.classList.remove('active'));
+}
+
+// Core function to play dialogue audio
+function playDialogueAudio(btn, text) {
+  // Stop any current audio first
+  stopCurrentSpeech();
+  
+  if ('speechSynthesis' in window) {
+    // Create a new utterance
+    const utterance = new SpeechSynthesisUtterance(text);
+    utterance.lang = 'en-US';
+    utterance.rate = speechRate;
+    utterance.pitch = 1;
+    currentUtterance = utterance;
+
+    // Update button state to 'playing'
+    btn.classList.add('playing');
+    btn.textContent = '◼ Stop';
+
+    // Optional: Activate waveform animation if it exists in the current view
+    const waveBars = document.querySelectorAll('.wave-bar');
+    waveBars.forEach(bar => bar.classList.add('active'));
+
+    utterance.onend = () => {
+      // Reset the specific button
+      if (btn) {
+        btn.classList.remove('playing');
+        btn.textContent = '▶ Listen';
+      }
+      // Deactivate waveform
+      waveBars.forEach(bar => bar.classList.remove('active'));
+      currentUtterance = null;
+    };
+
+    utterance.onerror = () => {
+      if (btn) {
+        btn.classList.remove('playing');
+        btn.textContent = '▶ Listen';
+      }
+      waveBars.forEach(bar => bar.classList.remove('active'));
+      currentUtterance = null;
+    };
+
+    window.speechSynthesis.speak(utterance);
+  } else {
+    btn.textContent = '⚠ No audio support';
+    console.warn("Web Speech API not supported in this browser.");
+  }
+}
+
+// Function used in the Speaking section to highlight and play
+function speakAndHighlight(div, text, idx) {
+  const btn = div.querySelector('.play-btn');
+  // Stop any current speech before playing a new one
+  stopCurrentSpeech();
+  playDialogueAudio(btn, text);
+  
+  // Highlight the selected phrase bubble
+  document.querySelectorAll('[id^="phrase-"]').forEach((d,i) => {
+    d.style.borderColor = i === idx ? 'rgba(255,101,132,0.5)' : 'var(--border)';
+    d.style.background = i === idx ? 'rgba(255,101,132,0.06)' : 'var(--bg3)';
+  });
+}
+
+// Set playback rate for listening
+function setRate(rate, btn) {
+  speechRate = rate;
+  document.querySelectorAll('.speed-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  // Optional: announce rate change via speech? Not needed.
+}
+
+// ====== MODAL ======
+function openModal(type) {
+  document.getElementById('modal-' + type).classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeModal(type) {
+  // Stop any ongoing speech when closing modal
+  stopCurrentSpeech();
+  document.getElementById('modal-' + type).classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+document.querySelectorAll('.modal-overlay').forEach(overlay => {
+  overlay.addEventListener('click', function(e) {
+    if (e.target === this) {
+      stopCurrentSpeech();
+      this.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+  });
+});
+
+// ====== TABS / SCENES ======
+function switchScene(modal, idx, btn) {
+  // Stop any speech when switching tabs
+  stopCurrentSpeech();
+  const scenes = document.querySelectorAll('#modal-' + modal + ' .dialog-scene');
+  scenes.forEach((s, i) => s.classList.toggle('active', i === idx));
+
+  const tabs = btn.closest('.tabs').querySelectorAll('.tab-btn');
+  tabs.forEach(t => t.classList.remove('active'));
+  btn.classList.add('active');
+}
+
+// ====== QUIZ ======
+let totalScore = 0;
+
+function checkAnswer(btn, result, feedbackId) {
+  const opts = btn.closest('.quiz-options').querySelectorAll('.quiz-opt');
+  opts.forEach(o => { o.disabled = true; });
+
+  const fb = document.getElementById(feedbackId);
+
+  if (result === 'correct') {
+    btn.classList.add('correct');
+    if (fb) {
+      fb.classList.add('show', 'ok');
+      fb.querySelector('span').textContent = '✓ ' + fb.querySelector('span').textContent.replace('✓ ','');
+    }
+    totalScore += 10;
+    updateScore();
+    // Mini celebration
+    createSparkle(btn);
+  } else {
+    btn.classList.add('wrong');
+    if (fb) {
+      fb.classList.add('show', 'fail');
+      fb.querySelector('span').textContent = '✗ Not quite! The correct answer is highlighted below.';
+    }
+    // Highlight correct (optional logic)
+    opts.forEach(o => {
+      if (o.textContent.includes("medium latte") || o.textContent.includes("Three years") || o.textContent.includes("Lisbon") || o.textContent.includes("swap") || o.textContent.includes("exchange for a medium") || o.textContent.includes("I see your point") || o.textContent.includes("Always → Often")) {
+        o.classList.add('correct');
+      }
+    });
+  }
+}
+
+function updateScore() {
+  document.getElementById('totalScore').textContent = '⭐ ' + totalScore + ' pts';
+}
+
+function createSparkle(btn) {
+  const rect = btn.getBoundingClientRect();
+  const emojis = ['⭐','✨','🎉','💫'];
+  for(let i = 0; i < 5; i++) {
+    const el = document.createElement('div');
+    el.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+    el.style.cssText = `
+      position: fixed;
+      left: ${rect.left + Math.random() * rect.width}px;
+      top: ${rect.top}px;
+      font-size: 1.2rem;
+      pointer-events: none;
+      z-index: 9999;
+      transition: all 0.8s ease;
+      opacity: 1;
+    `;
+    document.body.appendChild(el);
+    setTimeout(() => {
+      el.style.transform = `translateY(-60px) rotate(${Math.random() * 40 - 20}deg)`;
+      el.style.opacity = '0';
+    }, 50);
+    setTimeout(() => el.remove(), 900);
+  }
+}
+
+// ====== WRITING ======
+function updateWordCount(textareaId, countId) {
+  const text = document.getElementById(textareaId).value.trim();
+  const words = text ? text.split(/\s+/).length : 0;
+  document.getElementById(countId).textContent = words + ' words';
+}
+
+function showModelAnswer(id) {
+  const el = document.getElementById(id);
+  el.classList.add('show');
+  el.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+
+// ====== MIC (simulated) ======
+let micActive = false;
+let micTimer = null;
+
+function toggleMic() {
+  const btn = document.getElementById('micBtn');
+  const status = document.getElementById('speakStatus');
+  micActive = !micActive;
+
+  if (micActive) {
+    btn.classList.add('recording');
+    status.textContent = '🔴 Recording... speak the phrase aloud!';
+    micTimer = setTimeout(() => {
+      micActive = false;
+      btn.classList.remove('recording');
+      status.textContent = '✅ Great job! Try the next phrase.';
+      totalScore += 5;
+      updateScore();
+    }, 4000);
+  } else {
+    clearTimeout(micTimer);
+    btn.classList.remove('recording');
+    status.textContent = 'Toca el micrófono para practicar';
+  }
+}
+
+// ====== TIMER ======
+let timerInterval = null;
+let timerSeconds = 240;
+
+function startTimer() {
+  if (timerInterval) { clearInterval(timerInterval); }
+  timerInterval = setInterval(() => {
+    timerSeconds--;
+    const m = Math.floor(timerSeconds / 60);
+    const s = timerSeconds % 60;
+    document.getElementById('timer-display').textContent = m + ':' + String(s).padStart(2,'0');
+    if (timerSeconds <= 0) {
+      clearInterval(timerInterval);
+      document.getElementById('timer-display').textContent = '🎉 Done!';
+    }
+  }, 1000);
+}
+
+function resetTimer() {
+  clearInterval(timerInterval);
+  timerSeconds = 240;
+  document.getElementById('timer-display').textContent = '4:00';
+}
+
+// ====== Escape key ======
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') {
+    stopCurrentSpeech();
+    document.querySelectorAll('.modal-overlay.open').forEach(m => {
+      m.classList.remove('open');
+      document.body.style.overflow = '';
+    });
+  }
+});
+</script>
+</body>
+</html>
